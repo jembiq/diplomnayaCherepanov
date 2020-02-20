@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AuthActivity">
+
+    <include layout="@layout/dots" />
+
+    <include layout="@layout/dots_x" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pin_dot1"
+        android:layout_marginTop="40dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_1"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="@string/num1"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/btn_2"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="@string/num2"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/btn_3"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="@string/num3"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_4"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="@string/num4"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/btn_5"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="@string/num5"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/btn_6"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="@string/num6"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_7"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="@string/num7"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/btn_8"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="@string/num8"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/btn_9"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="@string/num9"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="80dp"
+                android:layout_height="50dp" />
+
+            <Button
+                android:id="@+id/btn_0"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="@string/num0"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/clear_btn"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="@string/enter"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
