@@ -31,8 +31,6 @@ public class AuthActivity extends AppCompatActivity {
     }
 
     private void init() {
-        String pinCode;
-
         dot1 = findViewById(R.id.pin_dot1_x);
         dot2 = findViewById(R.id.pin_dot2_x);
         dot3 = findViewById(R.id.pin_dot3_x);
@@ -50,15 +48,12 @@ public class AuthActivity extends AppCompatActivity {
         btn9 = findViewById(R.id.btn_9);
         clearBtn = findViewById(R.id.clear_btn);
 
-        sharedPref = getSharedPreferences("pinSaver", MODE_PRIVATE);
-
-        pinCode = enterPinCode();
+        enterPinCode();
 
     }
 
     private String enterPinCode() {
         final String[] pin = {""};
-        final int pinLength = pin[0].length();
 
         btn0.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,8 +61,10 @@ public class AuthActivity extends AppCompatActivity {
                 if(pin[0].length() < 4) {
                     pin[0] += "0";
 
-                    pinDotON(pinLength);
+                    pinDotON(pin[0].length());
                 }
+
+                pinChecker(pin[0]);
             }
         });
 
@@ -77,8 +74,10 @@ public class AuthActivity extends AppCompatActivity {
                 if(pin[0].length() < 4) {
                     pin[0] += "1";
 
-                    pinDotON(pinLength);
+                    pinDotON(pin[0].length());
                 }
+
+                pinChecker(pin[0]);
             }
         });
 
@@ -88,8 +87,10 @@ public class AuthActivity extends AppCompatActivity {
                 if(pin[0].length() < 4) {
                     pin[0] += "2";
 
-                    pinDotON(pinLength);
+                    pinDotON(pin[0].length());
                 }
+
+                pinChecker(pin[0]);
             }
         });
 
@@ -99,8 +100,10 @@ public class AuthActivity extends AppCompatActivity {
                 if(pin[0].length() < 4) {
                     pin[0] += "3";
 
-                    pinDotON(pinLength);
+                    pinDotON(pin[0].length());
                 }
+
+                pinChecker(pin[0]);
             }
         });
 
@@ -110,8 +113,10 @@ public class AuthActivity extends AppCompatActivity {
                 if(pin[0].length() < 4) {
                     pin[0] += "4";
 
-                    pinDotON(pinLength);
+                    pinDotON(pin[0].length());
                 }
+
+                pinChecker(pin[0]);
             }
         });
 
@@ -121,8 +126,10 @@ public class AuthActivity extends AppCompatActivity {
                 if(pin[0].length() < 4) {
                     pin[0] += "5";
 
-                    pinDotON(pinLength);
+                    pinDotON(pin[0].length());
                 }
+
+                pinChecker(pin[0]);
             }
         });
 
@@ -132,8 +139,10 @@ public class AuthActivity extends AppCompatActivity {
                 if(pin[0].length() < 4) {
                     pin[0] += "6";
 
-                    pinDotON(pinLength);
+                    pinDotON(pin[0].length());
                 }
+
+                pinChecker(pin[0]);
             }
         });
 
@@ -143,8 +152,10 @@ public class AuthActivity extends AppCompatActivity {
                 if(pin[0].length() < 4) {
                     pin[0] += "7";
 
-                    pinDotON(pinLength);
+                    pinDotON(pin[0].length());
                 }
+
+                pinChecker(pin[0]);
             }
         });
 
@@ -154,8 +165,10 @@ public class AuthActivity extends AppCompatActivity {
                 if(pin[0].length() < 4) {
                     pin[0] += "8";
 
-                    pinDotON(pinLength);
+                    pinDotON(pin[0].length());
                 }
+
+                pinChecker(pin[0]);
             }
         });
 
@@ -165,21 +178,26 @@ public class AuthActivity extends AppCompatActivity {
                 if(pin[0].length() < 4) {
                     pin[0] += "9";
 
-                    pinDotON(pinLength);
+                    pinDotON(pin[0].length());
                 }
+
+                pinChecker(pin[0]);
             }
         });
 
         clearBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (pin[0].length() < 3) {
-                    pin[0] = "";
-                }
+                dot1.setVisibility(View.INVISIBLE);
+                dot2.setVisibility(View.INVISIBLE);
+                dot3.setVisibility(View.INVISIBLE);
+                dot4.setVisibility(View.INVISIBLE);
+
+                pin[0] = "";
             }
         });
 
-        if (pin[0].length() == 3) {
+        if (pin[0].length() == 3 & pin[0].equals(getIntent().getStringExtra("pin"))) {
             Toast.makeText(this
                     , "correct pin!"
                     , Toast.LENGTH_SHORT)
@@ -190,21 +208,54 @@ public class AuthActivity extends AppCompatActivity {
         return null;
     }
 
+    private String pinChecker(String pin) {
+        if (pin.length() == 4) {
+
+            if (pin.equals(getIntent().getStringExtra("pin"))) {
+
+                Toast.makeText(this
+                        , "correct pin!"
+                        , Toast.LENGTH_SHORT)
+                        .show();
+
+                pin = "";
+
+            }
+
+        }
+
+        if (pin.length() == 4 & !pin.equals(getIntent().getStringExtra("pin"))) {
+            Toast.makeText(this
+                    , "incorrect pin!"
+                    , Toast.LENGTH_SHORT)
+                    .show();
+
+            dot1.setVisibility(View.INVISIBLE);
+            dot2.setVisibility(View.INVISIBLE);
+            dot3.setVisibility(View.INVISIBLE);
+            dot4.setVisibility(View.INVISIBLE);
+
+            pin = "";
+        }
+
+        return pin;
+    }
+
     private void pinDotON(int pinLength) {
         switch (pinLength) {
-            case 0 :
+            case 1 :
                 dot1.setVisibility(View.VISIBLE);
                 break;
 
-            case 1 :
+            case 2 :
                 dot2.setVisibility(View.VISIBLE);
                 break;
 
-            case 2 :
+            case 3 :
                 dot3.setVisibility(View.VISIBLE);
                 break;
 
-            case 3 :
+            case 4 :
                 dot4.setVisibility(View.VISIBLE);
                 break;
         }

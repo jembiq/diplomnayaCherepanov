@@ -14,4 +14,5 @@
     <string name="num8">8</string>
     <string name="num9">9</string>
     <string name="enter">←</string>
+    <string name="title_activity_notes">NotesActivity</string>
 </resources>

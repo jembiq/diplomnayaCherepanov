@@ -36,7 +36,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (pinInputField.getText().toString().length() != 4) {
+                if (pinInputField.getText().toString().length() == 4) {
 
                     pin = pinInputField.getText().toString();
 
@@ -44,6 +44,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     editor.putString(PIN, pin);
                     editor.apply();
 
+                    authIntent.putExtra("pin", sharedPref.getString(PIN, ""));
                     startActivity(authIntent);
 
                 } else {
@@ -51,7 +52,6 @@ public class RegistrationActivity extends AppCompatActivity {
                     Toast.makeText(RegistrationActivity.this
                             , "pin must contain 4 numbers"
                             , Toast.LENGTH_SHORT).show();
-
                 }
             }
 
